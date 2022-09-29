@@ -1,6 +1,5 @@
-user_input = input()
+user_input = list(map(int, input().split()))
 
-lst = user_input.split(" ")
-lst = [-x for x in lst]
+lst = [-x for x in user_input]
 
 print(lst)
