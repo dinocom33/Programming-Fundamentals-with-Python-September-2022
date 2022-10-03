@@ -4,8 +4,8 @@ second_number = int(input())
 number = first_number
 lst = []
 
-for _ in range(second_number):
-    number += first_number
-    lst.append(number - first_number)
+for current_number in range(1, second_number + 1):
+    number = first_number * current_number
+    lst.append(number)
 
 print(lst)
