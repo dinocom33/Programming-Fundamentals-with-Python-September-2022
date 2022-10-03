@@ -1,9 +1,9 @@
 gift_names = input().split()
 
-command = input().split()
-command_as_string = " ".join([str(element) for element in command])
+command = input()
 
-while command_as_string != "No Money":
+while command != "No Money":
+    command = command.split()
     if "OutOfStock" in command:
         for index in range(len(gift_names)):
             if gift_names[index] == command[1]:
@@ -13,10 +13,9 @@ while command_as_string != "No Money":
             gift_names[int(command[2])] = command[1]
     elif "JustInCase" in command:
         gift_names[-1] = command[1]
-    command = input().split()
-    command_as_string = " ".join([str(element) for element in command])
+    command = input()
 
-for index_value in gift_names:
+for index_value in gift_names[::-1]:
     if index_value == "None":
         gift_names.remove("None")
 
