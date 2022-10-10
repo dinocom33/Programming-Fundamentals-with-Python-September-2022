@@ -1,12 +1,15 @@
+def sum_numbers(number_a, number_b):
+    return number_a + number_b
+
+
+def subtract(sum, number_c):
+    return sum - number_c
+
+
 def add_and_subtract(number_a, number_b, number_c):
-
-    def sum_numbers():
-        return number_a + number_b
-
-    def subtract():
-        return sum_numbers() - number_c
-
-    return subtract()
+    sum_first_second = sum_numbers(number_a, number_b)
+    final_result = subtract(sum_first_second, number_c)
+    return final_result
 
 
 first_number = int(input())
