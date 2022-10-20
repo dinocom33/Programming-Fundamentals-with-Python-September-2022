@@ -1,8 +1,9 @@
 initial_energy = int(input())
 
-command = input()
 energy_left = initial_energy
 wins_count = 0
+
+command = input()
 
 while command != "End of battle":
     current_command = int(command)
@@ -13,6 +14,7 @@ while command != "End of battle":
     if energy_left < current_command:
         print(f"Not enough energy! Game ends with {wins_count} won battles and {energy_left} energy")
         break
+
     energy_left -= current_command
     wins_count += 1
     command = input()
