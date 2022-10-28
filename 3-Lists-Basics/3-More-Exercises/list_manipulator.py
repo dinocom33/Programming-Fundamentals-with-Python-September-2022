@@ -1,6 +1,5 @@
 initial_list = list(map(int, input().split(" ")))
 
-temp_list = initial_list.copy()
 even_numbers = []
 odd_numbers = []
 
@@ -32,9 +31,11 @@ while command != "end":
     elif action == "min":
         value = current_command[1]
         if value == "even" and even_numbers:
-            print((len(initial_list) - initial_list[::-1].index(min(even_numbers)) - 1))
+            result = (len(initial_list) - initial_list[::-1].index(min(even_numbers)) - 1)
+            print(result)
         elif value == "odd":
-            print((len(initial_list) - initial_list[::-1].index(min(odd_numbers)) - 1))
+            result = (len(initial_list) - initial_list[::-1].index(min(odd_numbers)) - 1)
+            print(result)
         else:
             print("No matches")
 
