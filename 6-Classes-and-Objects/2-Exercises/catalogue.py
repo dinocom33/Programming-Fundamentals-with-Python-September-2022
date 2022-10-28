@@ -8,7 +8,7 @@ class Catalogue:
         self.products.append(product_name)
 
     def get_by_letter(self, first_letter: str):
-        return [i for i in self.products if i.lower().startswith(first_letter.lower())]
+        return [i for i in self.products if i.startswith(first_letter)]
 
     def __repr__(self):
         self.products.sort()
