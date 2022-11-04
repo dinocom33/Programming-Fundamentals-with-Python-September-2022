@@ -8,5 +8,5 @@ for current_symbol in symbols:
         letters[current_symbol] = 0
     letters[current_symbol] += 1
 
-for letter, occurrences in letters:
-print(f"{letter} -> {occurrences}")
+for letter, occurrences in letters.items():
+    print(f"{letter} -> {occurrences}")

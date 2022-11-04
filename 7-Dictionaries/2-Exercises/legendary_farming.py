@@ -1,25 +1,30 @@
-dictionary = {}
+dictionary = {"shards": 0, "fragments": 0, "motes": 0}
+items = input().split()
 legendary_item_found = False
 
 while not legendary_item_found:
-    items = input().split()
     for i in range(0, len(items), 2):
-        value, key = items[i], items[i + 1]
-        key_lower = key.lower()
-        if key_lower not in dictionary:
-            dictionary[key_lower] = 0
-        dictionary[key_lower] += int(value)
-        if key_lower == "motes" and dictionary[key_lower] >= 250:
+        value, key = int(items[i]), items[i + 1].lower()
+        if key not in dictionary:
+            dictionary[key] = 0
+        dictionary[key] += value
+        if key == "motes" and dictionary[key] >= 250:
+            dictionary[key] -= 250
             legendary_item_found = True
             print("Dragonwrath obtained!")
-            break
-        elif key_lower == "shards" and dictionary[key_lower] >= 250:
+        elif key == "shards" and dictionary[key] >= 250:
+            dictionary[key] -= 250
             legendary_item_found = True
             print("Shadowmourne obtained!")
-            break
-        elif key_lower == "fragments" and dictionary[key_lower] >= 250:
+        elif key == "fragments" and dictionary[key] >= 250:
+            dictionary[key] -= 250
             legendary_item_found = True
             print("Valanyr obtained!")
+        if legendary_item_found:
             break
+    if legendary_item_found:
+        break
+    items = input().split()
 
-print()
+for key, item in dictionary.items():
+    print(f"{key}: {item}")
