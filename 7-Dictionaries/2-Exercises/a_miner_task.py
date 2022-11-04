@@ -14,6 +14,4 @@ while command != "stop":
     line += 1
     command = input()
 
-#dictionary = {k.capitalize(): v for k, v in dictionary.items()}
-
 [print(f"{key} -> {dictionary[key]}") for (key) in dictionary]
