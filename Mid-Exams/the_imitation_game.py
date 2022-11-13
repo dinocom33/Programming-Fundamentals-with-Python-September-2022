@@ -21,4 +21,4 @@ while commands != "Decode":
 
     commands = input()
 
-print(f"The decrypted message is: {unpack(message_list)}")
+print(f"The decrypted message is: {''.join(message_list)}")
