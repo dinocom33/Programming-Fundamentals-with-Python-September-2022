@@ -21,9 +21,7 @@ while command != "Reveal":
     elif action == "ChangeAll":
         substring = current_command[1]
         replacement = current_command[2]
-        for char in hidden_message:
-            if char == substring:
-                hidden_message = hidden_message.replace(char, replacement)
+        hidden_message = hidden_message.replace(substring, replacement)
         print(hidden_message)
     command = input()
 
