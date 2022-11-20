@@ -1,7 +1,7 @@
 import re
 
 number_of_messages = int(input())
-pattern = r"@([A-Z][a-z]+)[\w+\d+]*:([\d]+)!([AD])!->([\d]+)"
+pattern = r"@([A-Za-z]+)[^@\-\!\:\>]*\:(\d+)[^@\-\!\:\>]*\!([AD])\![^@\-\!\:\>]*\-\>(\d+)"
 attacked_planets = []
 destroyed_planets = []
 
@@ -28,6 +28,7 @@ if len(attacked_planets) > 0:
         print(f"-> {planet}")
 else:
     print(f"Attacked planets: 0")
+
 if len(destroyed_planets) > 0:
     print(f"Destroyed planets: {len(destroyed_planets)}")
     for planet in destroyed_planets:
