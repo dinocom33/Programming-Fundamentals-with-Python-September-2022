@@ -1,7 +1,7 @@
 import re
 
 number_of_messages = int(input())
-pattern = r"@([A-Za-z]+)[^@\-\!\:\>]*\:(\d+)[^@\-\!\:\>]*\!([AD])\![^@\-\!\:\>]*\-\>(\d+)"
+pattern = r"@([A-Z][a-z]+)[a-zA-Z]*[^\@\-!:>]*:([\d]+)[^@\-\!\:\>]*\!([AD])\![^@\-\!\:\>]*\-\>([\d]+)"
 attacked_planets = []
 destroyed_planets = []
 
