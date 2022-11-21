@@ -1,6 +1,6 @@
 import re
 
-pattern = r"%([A-Z][a-z]+)%[a-zA-Z0-9]*<([\w\d]+)>[a-zA-Z0-9]*\|(\d+)\|[a-zA-Z]*(\d+\.?\d+?)\$"
+pattern = r"%([A-Z][a-z]+)%[^\|\$\%\.]*<([\w\d]+)>[a-zA-Z0-9]*[^\|\$\%\.]*\|(\d+)\|[a-zA-Z]*(\d+\.?\d+?)\$"
 
 command = input()
 total_income = 0
