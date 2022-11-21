@@ -1,7 +1,3 @@
-def unpack(s):
-    return "".join(map(str, s))
-
-
 message = input()
 commands = input()
 

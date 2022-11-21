@@ -1,39 +1,15 @@
 import re
 
-
-def substring1(string, start="=", end="="):
-    final_list = []
-    if start in string and end in string:
-        string = string.replace(start, "**")
-        string = string.split("**")
-        for i in string:
-            if len(i) > 0 and i.isalpha():
-                if i[0].isupper() and len(i) > 3:
-                    final_list.append(i)
-    return final_list
-
-
-def substring2(string, start="/", end="/"):
-    final_list = []
-    if start in string and end in string:
-        string = string.replace(start, "**")
-        string = string.split("**")
-        for i in string:
-            if len(i) > 0 and i.isalpha():
-                if i[0].isupper() and len(i) > 3:
-                    final_list.append(i)
-    return final_list
-
-
 places = input()
+
+pattern = r"([=/])(?P<points>[A-Z][a-zA-Z]{2,})\1"
+
+valid_points = re.finditer(pattern, places)
 travel_points = 0
+travel_map = []
 
-result = substring1(places) + substring2(places)
-
-result_string = "".join(result)
-
-for i in result_string:
-    travel_points += 1
-
-print(f"Destinations: {', '.join(result)}")
+for point in valid_points:
+    travel_map.append(point["points"])
+    travel_points += len(point["points"])
+print(f"Destinations: {', '.join(travel_map)}")
 print(f"Travel Points: {travel_points}")
