@@ -1,18 +1,20 @@
-number = int(input())
+import re
 
-for barcodes in range(number):
+number_of_barcodes = int(input())
+
+pattern = r"@[#]{1,}(?P<barcode>[A-Z][a-zA-Z0-9]{4,}[A-Z])@[#]{1,}"
+
+for num_barcode in range(number_of_barcodes):
     current_barcode = input()
-    current_string = ""
+    result = re.finditer(pattern, current_barcode)
     product_group = ""
-    if current_barcode[0] == "@" and current_barcode[1] == "#":
-        for bar in range(len(current_barcode)):
-            if current_barcode[bar] != "@" and current_barcode[bar] != "#" and current_barcode[bar] != "":
-                current_string += current_barcode[bar]
-            if current_barcode[bar].isnumeric():
-                product_group += str(current_barcode[bar])
+    for bar in result:
+        barcode = bar["barcode"]
+        for digit in barcode:
+            if digit.isdigit():
+                product_group += digit
         if product_group == "":
             product_group = "00"
-    if current_string.isalnum() and len(current_string) >= 6:
         print(f"Product group: {product_group}")
-    else:
+    if product_group == "":
         print("Invalid barcode")
