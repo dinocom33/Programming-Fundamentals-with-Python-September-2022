@@ -1,20 +1,22 @@
-message = input()
-commands = input()
+encrypted_message = input()
 
-message_list = list(message)
+command = input()
 
-while commands != "Decode":
-    command = commands.split("|")
-    if command[0] == "Move":
-        for index in range(int(command[1])):
-            message_list += message_list.pop(0)
-    elif command[0] == "Insert":
-        message_list.insert(int(command[1]), command[2])
-    elif command[0] == "ChangeAll":
-        for element in range(len(message_list)):
-            if message_list[element] == command[1]:
-                message_list[element] = command[2]
+while command != "Decode":
+    current_command = command.split("|")
+    action = current_command[0]
+    if action == "Move":
+        number_of_letters = int(current_command[1])
+        encrypted_message = encrypted_message[number_of_letters:] + encrypted_message[:number_of_letters]
+    elif action == "Insert":
+        index = int(current_command[1])
+        value = current_command[2]
+        if 0 <= index <= len(encrypted_message):
+            encrypted_message = encrypted_message[:index] + value + encrypted_message[index:]
+    elif action == "ChangeAll":
+        substring = current_command[1]
+        replacement = current_command[2]
+        encrypted_message = encrypted_message.replace(substring, replacement)
+    command = input()
 
-    commands = input()
-
-print(f"The decrypted message is: {''.join(message_list)}")
+print(f"The decrypted message is: {encrypted_message}")
