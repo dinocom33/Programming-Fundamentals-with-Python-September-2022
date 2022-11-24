@@ -1,59 +1,67 @@
-def piece_exists(piece):
+def create_collection(number):
+    collection = {}
+    for _ in range(number):
+        current_command = input().split("|")
+        piece, composer, key = current_command[0], current_command[1], current_command[2]
+        collection[piece] = [composer, key]
+    return collection
+
+
+def add_piece(collection, piece, composer, key):
+    if piece not in collection:
+        collection[piece] = [composer, key]
+        print(f"{piece} by {composer} in {key} added to the collection!")
+    else:
+        print(f"{piece} is already in the collection!")
+    return collection
+
+
+def remove_piece(collection, piece):
     if piece in collection:
-        return True
-    return False
-
-
-def add_piece(piece, composer, key, first_time: bool):
-    if piece_exists(piece):
-        if not first_time:
-            print(f"{piece} is already in the collection!")
-            return
-    if not piece_exists(piece):
-        collection[piece] = collection.get(piece, dict())
-        collection[piece][key] = composer
-        if not first_time:
-            print(f"{piece} by {composer} in {key} added to the collection!")
-
-
-def remove_piece(piece):
-    if piece_exists(piece):
         del collection[piece]
-        return f"Successfully removed {piece}!"
-    return f"Invalid operation! {piece} does not exist in the collection."
+        print(f"Successfully removed {piece}!")
+    else:
+        print(f"Invalid operation! {piece} does not exist in the collection.")
+    return collection
 
 
-def change_key(piece, new_key):
-    if piece_exists(piece):
-        _, composer = collection[piece].popitem()
-        collection[piece] = {}
-        collection[piece][key] = composer
-        return f"Changed the key of {piece} to {new_key}!"
-    return f"Invalid operation! {piece} does not exist in the collection."
+def change_key(collection, piece, new_key):
+    if piece in collection:
+        collection[piece][1] = new_key
+        print(f"Changed the key of {piece} to {new_key}!")
+    else:
+        print(f"Invalid operation! {piece} does not exist in the collection.")
+
+
+def print_func(collection):
+    result = ""
+    for piece in collection:
+        composer, key = collection[piece][0], collection[piece][1]
+        result += f"{piece} -> Composer: {composer}, Key: {key}\n"
+    return result
+
+
+def main_function(number_of_piece):
+    collection = create_collection(number_of_piece)
+
+    while True:
+        command = input()
+        if command == "Stop":
+            print(print_func(collection))
+            break
+        current_command = command.split("|")
+        action, piece = current_command[0], current_command[1]
+        if action == "Add":
+            piece = current_command[1]
+            composer = current_command[2]
+            key = current_command[3]
+            add_piece(collection, piece, composer, key)
+        elif action == "Remove":
+            remove_piece(collection, piece)
+        elif action == "ChangeKey":
+            new_key = current_command[2]
+            change_key(collection, piece, new_key)
+
 
 number_of_pieces = int(input())
-
-collection = {}
-
-for p in range(number_of_pieces):
-    piece, composer, key = input().split("|")
-    add_piece(piece, composer, key, True)
-
-while True:
-    command = input()
-    if command == "Stop":
-        break
-    current_command = command.split("|")
-    current_action, current_piece = current_command[0], current_command[1]
-    if current_action == "Add":
-        current_composer, current_key = current_command[2], current_command[3]
-        add_piece(current_piece, current_composer, current_key, False)
-    elif current_action == "Remove":
-        print(remove_piece(current_piece))
-    elif current_action == "ChangeKey":
-        new_key = current_command[2]
-        print(change_key(current_piece, new_key))
-
-for piece in collection:
-    for key, composer in collection[piece].items():
-        print(f"{piece} -> Composer: {composer}, Key: {key}")
+main_function(number_of_pieces)
