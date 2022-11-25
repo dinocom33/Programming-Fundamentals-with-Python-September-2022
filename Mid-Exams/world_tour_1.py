@@ -28,7 +28,6 @@ while True:
     command = input()
     if command == "Travel":
         break
-
     current_command = command.split(":")
     action = current_command[0]
     if action == "Add Stop":

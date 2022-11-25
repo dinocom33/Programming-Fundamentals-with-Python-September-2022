@@ -9,6 +9,7 @@ def add_stop(stops, index, string):
         stops = stops[:index] + string + stops[index:]
     return stops
 
+
 def remove_stop(stops, start, end):
     if valid_index(start) and valid_index(end):
         stops = stops[:start_index] + "" + stops[end_index + 1:]
