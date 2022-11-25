@@ -4,15 +4,15 @@ def valid_index(index_to_validate):
     return False
 
 
-def add_stop(stops, index, string):
-    if valid_index(index):
-        stops = stops[:index] + string + stops[index:]
+def add_stop(stops, given_index, string):
+    if valid_index(given_index):
+        stops = stops[:given_index] + string + stops[given_index:]
     return stops
 
 
 def remove_stop(stops, start, end):
     if valid_index(start) and valid_index(end):
-        stops = stops[:start] + "" + stops[end + 1:]
+        stops = stops[:start] + stops[end + 1:]
     return stops
 
 
