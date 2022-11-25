@@ -35,16 +35,14 @@ while True:
         index = int(current_command[1])
         string_to_add = current_command[2]
         all_stops = add_stop(all_stops, index, string_to_add)
-        print(all_stops)
     elif action == "Remove Stop":
         start_index = int(current_command[1])
         end_index = int(current_command[2])
         all_stops = remove_stop(all_stops, start_index, end_index)
-        print(all_stops)
     elif action == "Switch":
         old_string = current_command[1]
         new_string = current_command[2]
         all_stops = switch_stops(all_stops, old_string, new_string)
-        print(all_stops)
+    print(all_stops)
 
 print(f"Ready for world tour! Planned stops: {all_stops}")
