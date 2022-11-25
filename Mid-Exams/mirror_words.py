@@ -2,7 +2,7 @@ import re
 
 text = input()
 
-pattern = r"([#@]{1})(?P<word>[a-zA-Z]{3,})(\1{2})(?P<word2>[a-zA-Z]{3,})\1"
+pattern = r"([#|@]{1})(?P<word>[a-zA-Z]{3,})(\1{2})(?P<word2>[a-zA-Z]{3,})\1"
 
 found_pairs = list(re.finditer(pattern, text))
 valid_pairs = []

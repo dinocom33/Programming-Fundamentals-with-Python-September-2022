@@ -28,6 +28,7 @@ while True:
     command = input().split(":")
     action = command[0]
     if action == "Travel":
+        print(f"Ready for world tour! Planned stops: {all_stops}")
         break
 
     if action == "Add Stop":
@@ -43,5 +44,3 @@ while True:
         new_string = command[2]
         all_stops = switch_stops(all_stops, old_string, new_string)
     print(all_stops)
-
-print(f"Ready for world tour! Planned stops: {all_stops}")

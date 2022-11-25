@@ -13,8 +13,6 @@ for match in result:
     item, date, calories = match["item"], match["date"], int(match["calories"])
     total_calories += calories
     final_result.append({"name": item, "date": date, "calories": calories})
-    # final_result[item].append(date)
-    # final_result[item].append(calories)
 
 days = total_calories // 2000
 print(f"You have food to last you for: {days} days!")
